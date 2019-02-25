@@ -15,3 +15,14 @@ pratice Javascript.
 8. slide-in/out on click
 9. popup
 10. tootlip
+11. to-do list
+12. Quiz
+13. astrology predict
+14. color scale generator
+15. create components
+16. ecommerce - color change of product
+17. chat
+18. conversion of units
+19. gif search
+20. tweet search
+21. random image

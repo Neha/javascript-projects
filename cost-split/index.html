@@ -21,17 +21,16 @@
     let amount = Number(amountField.value);
     let splitCost = Number(splitCostField.value);
     
-    calculateAmount(amount, splitCost);
+    const indvAmt = calculateAmount(amount, splitCost);
+
+    const text = `Every person needs to pay ${indvAmt}`
+    textField.innerHTML = text;
   })
   
   const calculateAmount = (amount,splitCost) =>{
     let indvi_amt = amount/splitCost;
-   printResult(indvi_amt);
+     return indvi_amt;
   }
-  
-  const printResult = (indvi_amt) => {
-    var text = `Every person needs to pay ${indamt}`
-    textField.innerHTML = text;
-  }</script>
+</script>
 </body>
 </html>
