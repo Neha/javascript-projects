@@ -6,10 +6,10 @@ pratice Javascript.
 # projects list
 
 1. Tip calculator - done
-2. Cost split - working
+2. Cost split - done
 3. Calculator
 4. form validator
-5. color picker
+5. color picker - partially done
 6. flyout navigation
 7. hover effect
 8. slide-in/out on click
@@ -26,3 +26,9 @@ pratice Javascript.
 19. gif search
 20. tweet search
 21. random image
+22. quote generator
+23. Sliders
+24. tabs/accordion
+25. progress bar
+26. word count
+27. search for word in a page
