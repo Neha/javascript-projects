@@ -20,23 +20,14 @@
 <body>
   <div id="color">Look Maa!! I am changing color.</div>
   <input type="range" min="0" max="360" value="0"  steps="4" id="rangeHandler"/> 
-  
-  
-<script>const colorBox = document.getElementById('color');
+ <script>
+  const colorBox = document.getElementById('color');
   const rangeHandler = document.getElementById('rangeHandler');
   
   rangeHandler.addEventListener('mousemove', function(){
-    let colorNewVal = Number(this.value); color.style.background = `hsl(${colorNewVal},50%, 60%)`;
+    let colorNewVal = Number(this.value); 
+    color.style.background = `hsl(${colorNewVal},50%, 60%)`;
   })
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  </script>
+</script>
 </body>
 </html>
