@@ -14,7 +14,7 @@ pratice Javascript.
 7. hover effect
 8. slide-in/out on click
 9. popup
-10. tootlip
+10. tootlip - done by 2 solution, CSS and JS. However, would like to add JS animations.
 11. to-do list
 12. Quiz
 13. astrology predict
