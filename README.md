@@ -12,7 +12,7 @@ pratice Javascript.
 5. color picker - partially done
 6. flyout navigation
 7. hover effect
-8. slide-in/out on click
+8. slide-in/out on click - Sliding is done , animation is left
 9. popup
 10. tootlip - done by 2 solution, CSS and JS. However, would like to add JS animations.
 11. to-do list
