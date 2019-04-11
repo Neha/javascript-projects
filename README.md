@@ -1,34 +1,42 @@
-# javascript-projects
+# NO Framework Please - Javascript Only :computer:
 
-A repo of collection of possible Javascript projects one can build to learn or
-pratice Javascript.
+This repo is dedicated to vanilla JavaScript projects and code snippets. If you are looking to pratice, or just want to start then this repo is for you. The idea is to practise with vanilla JavaScript. 
 
-# projects list
+# Tech Stack
+ - HTML5
+- CSS
+- JavaScript
 
-1. Tip calculator - done
-2. Cost split - done
-3. Calculator
-4. form validator
-5. color picker - partially done
-6. flyout navigation
-7. hover effect
-8. slide-in/out on click - Sliding is done , animation is left
-9. popup
-10. tootlip - done by 2 solution, CSS and JS. However, would like to add JS animations.
-11. to-do list
-12. Quiz
-13. astrology predict
-14. color scale generator
-15. create components
-16. ecommerce - color change of product
-17. chat
-18. conversion of units
-19. gif search
-20. tweet search
-21. random image
-22. quote generator
-23. Sliders
-24. tabs/accordion
-25. progress bar
-26. word count
-27. search for word in a page
+# Projects Ideas
+
+ 1. Tip calculator  :white_check_mark:
+ 2. Cost split  :white_check_mark:
+ 3. Calculator 
+ 4. Form validator 
+ 5. Color picker :white_check_mark:
+ 6. Flyout navigation
+ 7. Hover effect :white_check_mark:
+ 8. Slide-in/out on click - Sliding is done , animation is left
+ 9. Popup
+ 10. Tootlip - done by 2 solution, CSS and JS. However, would like to add
+ 11. JS animations.
+ 12. To-do list
+ 13. Quiz
+ 14. Astrology predict
+ 15. Color scale generator
+ 16. Create components
+ 17. E-commerce - color change of product
+ 18. Chat
+ 19. Conversion of units
+ 20. gif search
+ 21. Tweet search
+ 22. Random image
+ 23. Quote generator
+ 24. Sliders
+ 25. Tabs/Accordion
+ 26. Progress bar
+ 27. Word count
+ 28. Search for word in a page
+
+# Contribution
+nsharma215@gmail.com 
