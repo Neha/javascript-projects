@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Form Validator</title>
+    <style>
+        .main {
+            margin: 0 auto;
+            max-width: 50rem;
+            text-align: center;
+            font-size: large;
+        }
+        h1 {
+            text-align: center;
+        }
+        #main-form input {
+            margin: auto .2rem;
+        }
+
+        #main-form > div {
+            margin-bottom: 1rem;
+        }
+        .result {
+            font-size: xx-large;
+        }
+
+        .text-red {
+            color: red !important;
+        }
+    </style>
+</head>
+<body>
+    <h1> Form Validator</h1>
+    <div class="main">
+        <form id="main-form">
+
+            <div>
+                <label for="email">Email</label>
+                <input type="email" name="email" placeholder="Please input your email" id="email">
+            </div>
+
+            <div>
+                <label for="name">Name</label>
+                <input type="text" name="name" placeholder="Please input your name" id="name">
+            </div>
+
+            <div class="gender-select">
+                <span>Select your gender</span>
+                <div>
+
+                    <label for="gender-male">Male</label>
+                    <input type="radio" name="gender" value="male" id="gender-male">
+                </div>
+                <div>
+                    <label for="gender-female">Female</label>
+                    <input type="radio" name="gender" value="female" id="gender-female">
+                </div>
+            </div>
+
+            <div>
+                <label for="phone">Number</label>
+                <input type="text" name="phone" placeholder="Please input phone number" id="phone">
+            </div>
+            <div>
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+
+        <div class="result"></div>
+    </div>
+<script>
+    const $email = document.getElementById('email');
+    const $name = document.getElementById('name');
+    const $phone = document.getElementById('phone');
+
+    const $form = document.getElementById('main-form');
+    const $result = document.querySelector('.result');
+    $form.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        const data = new FormData(this);
+        for (const entry of data) {
+            if(entry[1].length === 0) {
+                console.log(entry[0])
+                $result.innerText = 'All field should not empty';
+                $result.classList.add('text-red');
+                return;
+            }
+        }
+
+        if( $name.value.length > 15 ) {
+            $result.innerText = 'Name should not longer than 15 charaters';
+            $result.classList.add('text-red');
+            return;
+        }
+
+        if(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test($email.value) === false) {
+            $result.innerText = 'Email is invalid';
+            $result.classList.add('text-red');
+            return;
+        }
+
+        if(/^[\d-]+$/.test($phone.value) === false) {
+            $result.innerText = 'Phone should only contains number or "-"';
+            $result.classList.add('text-red');
+            return;
+        }
+
+        $result.innerText = 'All Valid';
+        $result.classList.remove('text-red');
+    })
+</script>
+</body>
+</html>
