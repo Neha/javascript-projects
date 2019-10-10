@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+input[type=reset] {
+  background-color: #ff0000;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    max-width: 1140px;
+    margin: auto;
+}
+.text-centre{
+    text-align: center;
+}
+</style>
+</head>
+<body>
+
+
+
+<div class="container">
+ <h1 class="text-centre">Word Counter</h1>
+  <form onsubmit="countWords(event)" onreset="resetCounter(event)">
+    <label for="textarea">Enter your text</label>
+    <textarea id="textarea" name="subject" placeholder="Enter your text.." style="height:200px"></textarea>
+	<h3 id="results"></h3>
+    <input type="submit" value="Count">
+    <input type="reset" value="Reset">
+  </form>
+</div>
+<script>
+function countWords(event){
+	event.preventDefault()
+   let str = document.querySelector("#textarea").value
+   var count = 0;
+   words = str.split(" "); 
+    for (i=0 ; i < words.length ; i++){
+       if (words[i] != "")
+          count += 1; 
+    }
+	document.getElementById("results").innerHTML = count >1 ? `There are ${count} words in the text you have entered!` : `There are ${count} word in the text you have entered!`
+}
+function resetCounter(event){
+event.preventDefault()
+document.querySelector("#textarea").value =""
+document.getElementById("results").innerHTML=""
+}
+</script>
+</body>
+</html>
