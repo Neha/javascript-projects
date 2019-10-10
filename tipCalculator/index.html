@@ -1,13 +1,18 @@
 <!doctype html>
 <head>
 <title>Tip Calculator</title>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
 </head>
 <style>
 *{
   margin:0;
   padding:0;
 }
-
 body{
   color:#000;
   font:12px arial;
@@ -17,16 +22,14 @@ body{
   justify-content:center;
   align-content: center;
  }
-
 .container{
-  width:60%;
+  width:100%;
   margin: 0 auto;
-  height: 300px;
-  background:cyan;
+  height: 100%;
+  background:grey;
   padding:10px;
   border-radius: 20px;
 }
-
 .container h2{
   margin:20px 0;
   text-align:center;
@@ -36,13 +39,11 @@ button{
   margin:10px auto;
   border-radius:10px;
 }
-
 .content{
   display:flex;
   flex-direction:column;
   
 }
-
 input[type=number]{
   padding:10px;
  
@@ -53,24 +54,21 @@ input[type=number]{
   <div class="content">
     <h2>Tip calculation</h2>
   <input id="amount" type="number" placeholder="amount" />
-  <button>Calculate</button>
+  <button type="button" class="btn btn-success">Calculate</button>
   <p id="amountText">fdfsdf</p>
   </div>
 </section>
 <script>const amount = document.getElementById('amount');
 const button = document.querySelector('button');
 const amountText = document.getElementById('amountText');
-
 button.addEventListener('click',() => {
   let amt = Number(amount.value);
   calculateTip(amt);
 })
-
 const calculateTip = (amt) => {
   let tipAmount = amt * (12.6/100);
   calculateTotalAmout(tipAmount,amt);
 }
-
 const calculateTotalAmout = (tipAmount,amt) => {
   const payableAmount =  amt + tipAmount;
   let finaltext =`Tip payable is ${tipAmount} and total amount to be paid ${payableAmount}`;
@@ -79,3 +77,4 @@ const calculateTotalAmout = (tipAmount,amt) => {
 }</script>
 </body>
 </html>
+© 2019 Git
