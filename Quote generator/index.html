@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js"></script>
+</head>
+
+<body onload="startTime(); startDate()">
+    <div class="container">
+        <div id="date"></div>
+        <div id="display"></div>
+        <div id="content">
+            <p id="quote">"the people who are crazy enough to think they can change the world are the ones who do."
+                <br />- Steve Jobs</p>
+        </div>
+    </div>
+
+    <div id="b-nav">
+        <ul>
+            <button id="gen" onclick="genQuote()">
+                New Quote
+            </button>
+        </ul>
+    </div>
+</body>
+
+</html>
