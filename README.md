@@ -3,7 +3,7 @@
 This repo is dedicated to vanilla JavaScript projects and code snippets. If you are looking to pratice, or just want to start then this repo is for you. The idea is to practise with vanilla JavaScript. 
 
 # Tech Stack
- - HTML5
+- HTML5
 - CSS
 - JavaScript
 
@@ -39,4 +39,7 @@ This repo is dedicated to vanilla JavaScript projects and code snippets. If you 
  28. Search for word in a page
 
 # Contribution
-nsharma215@gmail.com 
+Repo is open for the PRs
+
+# Reach Me
+You can reach me at nsharma215@gmail.com or follow me at [Twitter](twitter.com/hellonehha)
