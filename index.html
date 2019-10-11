@@ -1,14 +1,60 @@
-<!doctype html>
-<head>
-<title>JSProjects by Neha</title>
-</head>
-<body>
-<section class="container">
-  
-  <h2>Javascript Projects</h2>
-  <ul>
-    <li><a href="js-tipcalculator/index.html" >Tip Calculator</a></li>
-    <li>Cost spliter calculator</li>
-  </ul>
-</section></body>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>JSProjects by Neha</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+            }
+
+            body {
+                padding: 20px;
+                background: #F9FAFC;
+            }
+
+            ul {
+                margin-top: 20px;
+            }
+
+            ul li {
+                list-style: none;
+                margin-bottom: 5px;
+            }
+
+            .container a {
+                color: #2E89FF;
+                text-decoration: none;
+            }
+
+        </style>
+    </head>
+    <body>
+        <section class="container">
+
+          <h2>Javascript Projects</h2>
+          <ul>
+            <li><a href="tipCalculator/index.html">Tip Calculator</a></li>
+            <li><a href="costSplit/index.html">Cost Spliter Calculator</a></li>
+            <li><a href="Slider/index.html">Slider</a></li>
+            <li><a href="Tooltip/index.html">Tooltip</a></li>
+            <li><a href="colorPicker/index.html">Color Picker</a></li>
+            <li><a href="Progressbar/index.html">Progressbar</a></li>
+          </ul>
+        </section>
+
+        <script>
+            // Sort Projects alphabetically
+            var projects = Array.from(document.querySelectorAll('.container > ul > li'));
+
+            projects.sort((a,b) => {
+                return ('' + a.querySelector("a").innerText).localeCompare(b.querySelector("a").innerText);
+            });
+
+            projects.forEach(p => document.querySelector('.container > ul').appendChild(p));
+        </script>
+    </body>
 </html>
