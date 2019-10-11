@@ -3,6 +3,21 @@
 <head>
   <title>Cost Split Calculator</title>
 </head>
+<style>
+
+  input[type="radio"]:not(:checked) + div {
+  display: none; 
+}
+
+input[type="radio"]:checked + div {
+  display: 'block';
+}
+ 
+ .error {
+   color: red;
+ }
+
+</style>
 
 <body>
   <main class="container">
@@ -14,9 +29,10 @@
       </label>
       <!-- choice of how to split -->
       <div>
-        <input type="radio" id="splitCost2" name="split-cost" value="byPerson" checked>
         <label for="splitCost2">Split cost by person</label>
-        <div>
+        <input type="radio" id="splitCost2" name="split-cost" value="byPerson" checked>
+
+        <div class='input-container byPerson'>
           <label for=people>Number of people<input type='number' id="splitCost" /></label>
           <button id="btn">Split!!</button>
           <p id="textField"></p>
@@ -25,19 +41,18 @@
     </section>
 
     <section>
-      <input type="radio" id="splitCost1" name="split-cost" value="byPercent">
       <label for="splitCost1">Split cost by percent</label>
-      <div>
+      <input type="radio" id="splitCost1" name="split-cost" value="byPercent">
+
+      <div class='input-container byPercent'>
         <input type='text' id="name" />
-        <input type='number' id="person1" min=0 max=100 required />
+        <input type='number' id="person1" />
 
-      </div>
-
-      <div>
         <input type='text' id="name" required />
-        <input type='number' id="person2" min=0 max=100 required />
+        <input type='number' id="person2" />
 
         <button id='percentBtn'>Split</button>
+        <p class='error'></p>
         <p id='amount1'></p>
         <p id='amount2'></p>
       </div>
@@ -69,15 +84,36 @@
     const percentBtn = document.querySelector('#percentBtn');
     const names = document.querySelectorAll('input[id=name]');
 
-    radioBtns.forEach(btn => {
-      //if selected, show input group
-      // btn.addEventListener('click', (splitPercentage));
-    });
+    console.log(radioBtns)
+    // radioBtns.forEach((btn, i) => {
+    //   //if selected, show input group
+    //   btn.addEventListener('click', () => {
+    //     if (btn.checked) {
+    //       document.querySelector(`div.${btn.value}`).style.display = 'block';
+    //     } else {
+    //       console.log(btn)
+    //       document.querySelector(`div.${btn.value}`).style.display = 'none';
+    //     }
+    //   })
+
+
+    // }
+
+    // );
+
+
+
+
 
     const splitPercentage = () => {
-      let amount = +amountField.value);
+      let amount = +amountField.value;
       let first = +person1.value / 100;
       let second = +person2.value / 100;
+      let error = document.querySelector('.error');
+
+      if (first > 1 || second > 1) {
+        return error.innerHTML = 'The percentage entered must be less than 100%. Please try again.';
+      }
       if (first) {
         person2.value = 100 - person1.value;
         second = +person2.value / 100;
@@ -85,21 +121,14 @@
         person1.value = 100 - person2.value;
         first = +person1.value / 100;
       }
-      amount1.innerHTML = `${names[0].value || 'person1'} will pay ${Number(first * amount)}`;
-      amount2.innerHTML = `${names[1].value || 'person2'} will pay ${Number(second * amount)}`;
+      amount1.innerHTML = `${names[0].value || 'Person1'} will pay ${Number(first * amount).toFixed(2)}`;
+      amount2.innerHTML = `${names[1].value || 'Person2'} will pay ${Number(second * amount).toFixed(2)}`;
     }
-    //onclick will calculate the amount and verify if the percentages are correct
+    //onclick will calculate the amount and correct the percentages
     percentBtn.addEventListener('click', () => {
       let amount = Number(amountField.value);
       splitPercentage();
     })
-
-    // if (selected) {
-    //   style.display: block;
-    // }
-
-
-
 
     const calculateAmount = (amount, splitCost) => {
       let indvi_amt = amount / splitCost;
