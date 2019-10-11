@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Berat, github.com/torelafes" />
+    <title>Gif Search</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+        }
+
+        body {
+            background: #F9FAFC;
+        }
+
+        .title {
+            font-weight: 500;
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .searchbar {
+            margin-top: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .wrapper {
+            max-width: 720px;
+            padding: 50px;
+            margin: 0 auto;
+        }
+
+        input {
+            -webkit-appearance: none;
+            border: 1px solid #E3E3E3;
+            outline: none;
+            border-radius: 4px;
+            height: 32px;
+            width: 100%;
+            display: block;
+            padding: 0 10px;
+            transition: 100ms border-color ease;
+            will-change: border-color;
+        }
+
+        input:active, input:focus {
+            border-color: #2E89FF;
+        }
+
+
+        /* Gif Results */
+
+        .results {
+            margin-top: 20px;
+            column-count: 3;
+            column-gap: 5px;
+        }
+
+        @media all and (max-width: 480px) {
+            .results {
+                column-count: 2;
+            }
+
+            .result {
+                width: 100% !important;
+            }
+        }
+
+        .result {
+           background-color: #eaeaea;
+           display: inline-block;
+           margin: 0 0 3px;
+           overflow: hidden;
+           width: 100%;
+           border-radius: 3px;
+           overflow: hidden;
+        }
+
+        .result img {
+            display: block;
+            max-width: 100%;
+            width:100%;
+            transition: 1s all ease;
+        }
+
+        .loader {
+            position: absolute;
+            top: 8px;
+            left: -24px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            -webkit-animation: loading 5s infinite alternate;
+            -moz-animation:    loading 5s infinite alternate;
+            -o-animation:      loading 5s infinite alternate;
+            animation:         loading 5s infinite alternate;
+            -webkit-transition: 300ms opacity ease;
+            -moz-transition: 300ms opacity ease;
+            -o-transition: 300ms opacity ease;
+            transition: 300ms opacity ease;
+            opacity: 0;
+        }
+
+        .loading {
+            opacity: 1;
+        }
+
+        /* Loader Animation that appear next to the search bar */
+
+        @-webkit-keyframes loading {
+            0%    { background-color: #00CCFF; transform: scale(1); }
+            10%   { transform: scale(1.2); }
+            20%   { background-color: #9933FF; transform: scale(1); }
+            30%   { transform: scale(1.2); }
+            40%   { background-color: #00FF99; transform: scale(1); }
+            50%   { transform: scale(1.2); }
+            60%   { background-color: #FFF35C; transform: scale(1); }
+            70%   { transform: scale(1.2); }
+            80%   { background-color: #FF6665; transform: scale(1); }
+            90%   { transform: scale(1.2); }
+            100%  { background-color: #00CCFF; transform: scale(1); }
+        }
+        @-moz-keyframes loading {
+            0%    { background-color: #00CCFF; transform: scale(1); }
+            10%   { transform: scale(1.2); }
+            20%   { background-color: #9933FF; transform: scale(1); }
+            30%   { transform: scale(1.2); }
+            40%   { background-color: #00FF99; transform: scale(1); }
+            50%   { transform: scale(1.2); }
+            60%   { background-color: #FFF35C; transform: scale(1); }
+            70%   { transform: scale(1.2); }
+            80%   { background-color: #FF6665; transform: scale(1); }
+            90%   { transform: scale(1.2); }
+            100%  { background-color: #00CCFF; transform: scale(1); }
+        }
+        @-o-keyframes loading {
+            0%    { background-color: #00CCFF; transform: scale(1); }
+            10%   { transform: scale(1.2); }
+            20%   { background-color: #9933FF; transform: scale(1); }
+            30%   { transform: scale(1.2); }
+            40%   { background-color: #00FF99; transform: scale(1); }
+            50%   { transform: scale(1.2); }
+            60%   { background-color: #FFF35C; transform: scale(1); }
+            70%   { transform: scale(1.2); }
+            80%   { background-color: #FF6665; transform: scale(1); }
+            90%   { transform: scale(1.2); }
+            100%  { background-color: #00CCFF; transform: scale(1); }
+        }
+        @keyframes loading {
+            0%    { background-color: #00CCFF; transform: scale(1); }
+            10%   { transform: scale(1.2); }
+            20%   { background-color: #9933FF; transform: scale(1); }
+            30%   { transform: scale(1.2); }
+            40%   { background-color: #00FF99; transform: scale(1); }
+            50%   { transform: scale(1.2); }
+            60%   { background-color: #FFF35C; transform: scale(1); }
+            70%   { transform: scale(1.2); }
+            80%   { background-color: #FF6665; transform: scale(1); }
+            90%   { transform: scale(1.2); }
+            100%  { background-color: #00CCFF; transform: scale(1); }
+        }
+    </style>
+
+    <!-- To make Ajax Calls easier -->
+    <script src="ajax.js"></script>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="title">
+            <span>Gif Search</span>
+        </div>
+        <div class="searchbar">
+            <input id="query" name="query" placeholder="Search all the GIFs" type="text" spellcheck="false">
+            <div class="loader"></div>
+        </div>
+        <div class="results"></div>
+    </div>
+
+    <script>
+        // You have to provide your own API KEY
+        // Visit https://developers.giphy.com/docs/api#quick-start-guide to obtain your API KEY
+        // PS: Newly created API Keys have limit of 42 requests per hour and 1.000 requests per day
+        const API_KEY = false;
+        const RESULT_LIMIT = 12;
+        const API_URL = `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&limit=${RESULT_LIMIT}&lang=en&q=`;
+
+        // Make GET Request to GIPHY API
+        function searchGif(query, callback) {
+            if(!API_KEY) {
+                alert("You haven't provided any API KEY, check developer console for more information");
+                console.error("You haven't provided any API KEY");
+                console.info("Check https://developers.giphy.com/docs/api#quick-start-guide to create an app, and obtain your own API KEY");
+            } else {
+                document.querySelector(".loader").classList.add('loading');
+                ajax.get(API_URL + query, '' ,function(responseText, response) {
+                	if(response.status == 200) {
+                        let result = JSON.parse(responseText);
+                        callback(result);
+                    } else {
+                        alert("An error occured while trying to fetch the results, have you typed your API Key correctly?")
+                        console.error("Could not fetch results", responseText, response);
+                    }
+                    document.querySelector(".loader").classList.remove('loading');
+                });
+            }
+        }
+
+        // Show results in DOM
+        function showResults(results) {
+            let resultsContainer = document.querySelector('.results');
+            resultsContainer.innerHTML = '';
+
+            let data = results.data;
+
+            for(let i = 0; i < data.length; ++i) {
+                let previewGifURL = data[i].images.fixed_width_downsampled.url;
+                // let previewGifURL = data[i].images.preview_gif.url;
+
+                let previewElm = document.createElement('a');
+                previewElm.className = 'result';
+
+                previewElm.setAttribute('href', data[i].bitly_url);
+                previewElm.setAttribute('target', '_blank');
+
+                // Create Image Element for the GIF
+                previewImgElm = document.createElement('img');
+                previewImgElm.setAttribute('src', previewGifURL);
+
+                previewElm.appendChild(previewImgElm);
+                resultsContainer.appendChild(previewElm);
+
+                // Rest is for making loading screen more appealing, not needed to append GIFs to DOM
+
+                // GIPHY colour palette
+                let colourPalette = ['#00CCFF', '#9933FF', '#00FF99', '#FFF35C', '#FF6665'];
+
+                // Get the image size from API and set it to result div so we can see the loader
+                previewElm.style.width = data[i].images.fixed_width_downsampled.width + "px";
+                previewElm.style.height = data[i].images.fixed_width_downsampled.height + "px";
+
+                // Select a random colour from palette and make it background colour
+                previewElm.style.backgroundColor = colourPalette[Math.floor(Math.random() * colourPalette.length)];
+
+                // After Image is fully loaded make parent's sizing auto so we can resize by keeping aspect ratio
+                previewImgElm.onload = function() {
+                    previewElm.style.width = "auto";
+                    previewElm.style.height = "auto";
+                }
+
+            }
+
+        }
+
+        // Check when query is typed down
+        let typeTimeout = null;
+        let latestQuery = null;
+        let queryInput = document.querySelector('#query');
+        queryInput.onkeyup = function(_) {
+            clearTimeout(typeTimeout);
+            // If user doesn't type anyting for 500ms make a search
+            typeTimeout = setTimeout(function() {
+                let query = queryInput.value.trim();
+                if(query.length && latestQuery != query) {
+                    searchGif(query, showResults);
+                    // To prevent making unnecessary request
+                    // On keyup if nothing changed in query don't make another request
+                    latestQuery = query;
+                }
+            }, 500);
+        }
+    </script>
+</body>
+</html>
