@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <textarea name="" id="textarea-input" cols="30" rows="10"></textarea>
+    <p>Character left : <span id="character-left">0/280</span></p>
+</body>
+<script>
+    var textareaInput = document.getElementById('textarea-input')
+    var maxlength = 280;
+    textareaInput.onkeyup = function() {
+        var counter = this.value.length;
+        var characterLeft = maxlength - counter;
+        document.getElementById('character-left').innerHTML = counter.toString()+"/280";
+        if(characterLeft < 0){
+            textareaInput.style.borderColor = "red";
+            textareaInput.style.outlineColor = "red";
+        }else{
+            textareaInput.removeAttribute("style")
+        }
+    };
+</script>
+</html>
