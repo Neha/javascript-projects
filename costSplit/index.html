@@ -32,7 +32,7 @@ input[type="radio"]:checked + div {
         <label for="splitCost2">Split cost by person</label>
         <input type="radio" id="splitCost2" name="split-cost" value="byPerson" checked>
 
-        <div class='input-container byPerson'>
+        <div class='byPerson'>
           <label for=people>Number of people<input type='number' id="splitCost" /></label>
           <button id="btn">Split!!</button>
           <p id="textField"></p>
@@ -44,13 +44,15 @@ input[type="radio"]:checked + div {
       <label for="splitCost1">Split cost by percent</label>
       <input type="radio" id="splitCost1" name="split-cost" value="byPercent">
 
-      <div class='input-container byPercent'>
-        <input type='text' id="name" />
-        <input type='number' id="person1" />
-
-        <input type='text' id="name" required />
-        <input type='number' id="person2" />
-
+      <div class='byPercent'>
+        <div>
+          <input type='text' id="name" placeholder="Name" />
+          <input type='number' id="person1" placeholder="%" />
+        </div>
+        <div>
+          <input type='text' id="name" placeholder="Name" />
+          <input type='number' id="person2" placeholder="%" />
+        </div>
         <button id='percentBtn'>Split</button>
         <p class='error'></p>
         <p id='amount1'></p>
@@ -75,7 +77,6 @@ input[type="radio"]:checked + div {
       textField.innerHTML = text;
     });
 
-    const percentage = document.querySelector('percentage');
     const amount1 = document.querySelector('#amount1');
     const amount2 = document.querySelector('#amount2');
     const person1 = document.querySelector('#person1');
@@ -83,26 +84,6 @@ input[type="radio"]:checked + div {
     const radioBtns = document.querySelectorAll('input[type=radio]');
     const percentBtn = document.querySelector('#percentBtn');
     const names = document.querySelectorAll('input[id=name]');
-
-    console.log(radioBtns)
-    // radioBtns.forEach((btn, i) => {
-    //   //if selected, show input group
-    //   btn.addEventListener('click', () => {
-    //     if (btn.checked) {
-    //       document.querySelector(`div.${btn.value}`).style.display = 'block';
-    //     } else {
-    //       console.log(btn)
-    //       document.querySelector(`div.${btn.value}`).style.display = 'none';
-    //     }
-    //   })
-
-
-    // }
-
-    // );
-
-
-
 
 
     const splitPercentage = () => {
