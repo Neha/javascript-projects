@@ -1,36 +1,103 @@
 <!doctype html>
-<head>
-<title>Cost Split Calculator</title>
-</head>
+  <head>
+    <title>Cost Split Calculator</title>
+  </head>
 
-<body>
-  <section class="container">
-  
-    <h2>Cost Spliter</h2>
-    <input type='number' id="amt"/>
-    <input type='number' id="splitCost"/>
-    <button id="btn">Split!!</button>
-    <p id="textField"></p>
-  </section>
-<script>const amountField = document.getElementById("amt");
-  const splitCostField = document.getElementById("splitCost");
-  const button = document.querySelector('button');
-  const textField = document.querySelector("#textField");
-  
-  button.addEventListener('click', () => {
-    let amount = Number(amountField.value);
-    let splitCost = Number(splitCostField.value);
-    
-    const indvAmt = calculateAmount(amount, splitCost);
+  <body>
+    <section class="container">
+      <h2>Cost Spliter</h2>
+      <label>Split By Percentage: </label> 
+        <input type="radio" id="radioBtn" value="false" />
 
-    const text = `Every person needs to pay ${indvAmt}`
-    textField.innerHTML = text;
-  })
-  
-  const calculateAmount = (amount,splitCost) =>{
-    let indvi_amt = amount/splitCost;
-     return indvi_amt;
-  }
-</script>
-</body>
+      <div id="general-split">
+          <label for="people">Number of People: </label>
+          <input type='number' id="people"/>
+      </div>
+      
+      <div id="percentage-split" style="display: none">
+        <label for="name1"> Name: </label>
+          <input type="text" id="name1"/>
+        <label>percentage: </label>
+          <input type='number' id="percentage1"/>% <br>
+        <label for="name2"> Name: </label>
+          <input type="text" id="name2"/>
+        <label>percentage: </label>
+          <input type='number' id="percentage2"/>%
+      </div>
+
+      <br/>
+      <label for="splitCost">Amount to Distribute: </label>
+        <input type='number' id="splitCost"/>
+      <button id="btn">Split!!</button>
+      <p id="textField"></p>
+    </section>
+
+    <script>
+      const radioBtn = document.getElementById('radioBtn');
+      const generalSplit = document.getElementById('general-split');
+      const percentageSplit = document.getElementById('percentage-split');
+      const noOfPeople = document.getElementById("people");
+      const splitCostField = document.getElementById("splitCost");
+      const name1 = document.getElementById('name1');
+      const name2 = document.getElementById('name2');
+      const percentage1 = document.getElementById('percentage1');
+      const percentage2 = document.getElementById('percentage2');
+      const button = document.querySelector('button');
+      const textField = document.querySelector("#textField");
+
+      radioBtn.addEventListener('click',showPercentageDiv);
+      button.addEventListener('click', splitAmount);
+
+      function showPercentageDiv() {
+        if (radioBtn.value === 'false') {
+          radioBtn.value = 'true';
+          radioBtn.checked = true;
+          percentageSplit.style.display = 'block';
+          generalSplit.style.display = 'none';
+        } else {
+          radioBtn.value = 'false';
+          radioBtn.checked = false;
+          percentageSplit.style.display = 'none';
+          generalSplit.style.display = 'block';
+        }
+        textField.innerHTML = '';
+      }
+
+      function splitAmount() {
+        if (splitCostField.value) {
+          let splitCost = Number(splitCostField.value);
+          if (radioBtn.checked) {
+            if (percentage1.value && percentage2.value) {
+              const prcntg1 = Number(percentage1.value);
+              const prcntg2 = Number(percentage2.value);
+              if (prcntg1 + prcntg2 === 100) {
+                const person1pay = splitCost*(prcntg1/100);
+                const person2pay = splitCost*(prcntg2/100);
+                if (name1.value && name2.value) {
+                  textField.innerHTML = `${name1.value} - ${prcntg1}% : Will pay Amount ${person1pay} <br/>
+                              ${name2.value} - ${prcntg2}% : Will pay Amount ${person2pay}`;
+                } else {
+                  textField.innerHTML = `Please enter with whom you want to Split`;
+                } 
+              } else {
+                textField.innerHTML = `Please consider the percentage to Split`;
+              }
+            } else {
+              textField.innerHTML = `Please enter percentage to Split`;
+            }
+          } else {
+            if (noOfPeople.value) {
+              const number = Number(noOfPeople.value);
+              const indvAmt = splitCost/number;
+              textField.innerHTML = `Every person needs to pay ${indvAmt}`;
+            } else {
+              textField.innerHTML = `Please enter number of people`;
+            }
+          }
+        } else {
+          textField.innerHTML = `Please enter an amount to Split`;
+        }  
+      }
+    </script>
+  </body>
 </html>
