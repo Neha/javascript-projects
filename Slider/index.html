@@ -1,60 +1,58 @@
-<!doctype html>
-<head>
-<title>Slider</title>
-</head>
-<style>
-*{
-  margin:0;
-  padding:0;
-}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Slider</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
 
-#container{
-  width:60%;
-  margin:0 auto;
-}
-#container div{
-  min-height:300px;
-  background:#eee;
-  position: absolute;
-  top:-340px;
-  width:100%;
-  border-bottom:5px solid #eee;
-}
+    #container {
+      width: 60%;
+      margin: 0 auto;
+    }
+    #container div {
+      min-height: 300px;
+      background: #eee;
+      position: absolute;
+      top: -340px;
+      width: 100%;
+      border-bottom: 5px solid #eee;
+    }
 
-button{
- width:300px;
- line-height:40px;
- background:#eee;
- border-bottom-left-radius:10px;
- border-bottom-right-radius:10px;
- margin:0 auto;
- display: block;
- position: relative;
-}
-</style>
-<body>
-  <div id="container">
+    button {
+      width: 300px;
+      line-height: 40px;
+      background: #eee;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      margin: 0 auto;
+      display: block;
+      position: relative;
+    }
+  </style>
+  <body>
+    <div id="container">
       <div id="content">Hey I am the content box</div>
       <button id="btn">Click Me!!</button>
-  </div>
-  <script>
-    const btn = document.getElementById('btn');
-    const content = document.getElementById('content');
-    var flag = 0;
-    btn.addEventListener('click', () => {
-      if(flag == 0){
-        content.style.top = 0;
-        content.style.position = 'relative';
-        flag++
-      }
-      else{
-        content.style.top = -340 + "px";
-        content.style.position = 'absolute';
-        flag--;
-      }
-     
-      
-    })
-  </script>
-</body>
+    </div>
+    <script>
+      const btn = document.getElementById('btn');
+      const content = document.getElementById('content');
+      var flag = 0;
+      btn.addEventListener('click', () => {
+        if (flag == 0) {
+          content.style.top = 0;
+          content.style.position = 'relative';
+          flag++;
+        } else {
+          content.style.top = -340 + 'px';
+          content.style.position = 'absolute';
+          flag--;
+        }
+      });
+    </script>
+  </body>
 </html>

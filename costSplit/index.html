@@ -1,36 +1,37 @@
-<!doctype html>
-<head>
-<title>Cost Split Calculator</title>
-</head>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cost Split Calculator</title>
+  </head>
 
-<body>
-  <section class="container">
-  
-    <h2>Cost Spliter</h2>
-    <input type='number' id="amt"/>
-    <input type='number' id="splitCost"/>
-    <button id="btn">Split!!</button>
-    <p id="textField"></p>
-  </section>
-<script>const amountField = document.getElementById("amt");
-  const splitCostField = document.getElementById("splitCost");
-  const button = document.querySelector('button');
-  const textField = document.querySelector("#textField");
-  
-  button.addEventListener('click', () => {
-    let amount = Number(amountField.value);
-    let splitCost = Number(splitCostField.value);
-    
-    const indvAmt = calculateAmount(amount, splitCost);
+  <body>
+    <section class="container">
+      <h2>Cost Spliter</h2>
+      <input type="number" id="amt" />
+      <input type="number" id="splitCost" />
+      <button id="btn">Split!!</button>
+      <p id="textField"></p>
+    </section>
+    <script>
+      const amountField = document.getElementById('amt');
+      const splitCostField = document.getElementById('splitCost');
+      const button = document.querySelector('button');
+      const textField = document.querySelector('#textField');
 
-    const text = `Every person needs to pay ${indvAmt}`
-    textField.innerHTML = text;
-  })
-  
-  const calculateAmount = (amount,splitCost) =>{
-    let indvi_amt = amount/splitCost;
-     return indvi_amt;
-  }
-</script>
-</body>
+      button.addEventListener('click', () => {
+        let amount = Number(amountField.value);
+        let splitCost = Number(splitCostField.value);
+
+        const indvAmt = calculateAmount(amount, splitCost);
+
+        const text = `Every person needs to pay ${indvAmt}`;
+        textField.innerHTML = text;
+      });
+
+      const calculateAmount = (amount, splitCost) => {
+        let indvi_amt = amount / splitCost;
+        return indvi_amt;
+      };
+    </script>
+  </body>
 </html>
