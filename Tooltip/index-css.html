@@ -1,54 +1,52 @@
-<!doctype html>
-<head>
-<title>Color Picker :: CSS</title>
-</head>
-<style>
-*{
-  margin:0;
-  padding:0;
-}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Color Picker :: CSS</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
 
-button{
-  padding:10px;
-  border-radius:10px;
-  background-color:aquamarine;
-  box-shadow:2px 2px 2px #000;
-  text-transform: uppercase;
-  line-height:42px;
- 
-  position: absolute;
-}
+    button {
+      padding: 10px;
+      border-radius: 10px;
+      background-color: aquamarine;
+      box-shadow: 2px 2px 2px #000;
+      text-transform: uppercase;
+      line-height: 42px;
 
-button ~ div{
-  width:100px;
-  padding:10px;
-  display:none;
-  background:#ccc;
-  position: relative;
-  top:50px;
-  border-radius:5px;
-  
-  
-}
+      position: absolute;
+    }
 
-button:hover ~ div{
-  display: block;
-}
+    button ~ div {
+      width: 100px;
+      padding: 10px;
+      display: none;
+      background: #ccc;
+      position: relative;
+      top: 50px;
+      border-radius: 5px;
+    }
 
-#container{
-  display:flex;
-  width:80%;
-  margin:0 auto;
-  justify-content: center;
-  align-items: center;
-  height:100vh;
-}
-</style>
-<body>
-  <section id="container">
+    button:hover ~ div {
+      display: block;
+    }
+
+    #container {
+      display: flex;
+      width: 80%;
+      margin: 0 auto;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+  </style>
+  <body>
+    <section id="container">
       <button>Hover me Please</button>
       <div>Hello!! I am toolyip</div>
-  </section>
-    
-</body>
+    </section>
+  </body>
 </html>
