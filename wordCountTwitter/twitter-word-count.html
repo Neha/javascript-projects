@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Javascript textarea character counter like twitter</title>
 </head>
 <body>
-    <textarea name="" id="textarea-input" cols="30" rows="10"></textarea>
-    <p>Character left : <span id="character-left">0/280</span></p>
+    <textarea id="textarea-input" cols="30" rows="10"></textarea>
+    <p>Character left : <span id="character-left">0</span>/280</p>
 </body>
 <script>
-    var textareaInput = document.getElementById('textarea-input')
-    var maxlength = 280;
-    textareaInput.onkeyup = function() {
-        var counter = this.value.length;
-        var characterLeft = maxlength - counter;
-        document.getElementById('character-left').innerHTML = counter.toString()+"/280";
+    const textareaInput = document.getElementById('textarea-input');
+    const maxlength = 280;
+    textareaInput.onkeyup = () => {
+        const counter = textareaInput.value.length;
+        const characterLeft = maxlength - counter;
+        document.getElementById('character-left').innerHTML = counter;
         if(characterLeft < 0){
             textareaInput.style.borderColor = "red";
             textareaInput.style.outlineColor = "red";
