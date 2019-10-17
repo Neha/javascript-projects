@@ -17,6 +17,8 @@
       flex-direction: column;
       justify-content: center;
       align-content: center;
+      background-image: url(https://picsbroker.com/wp-content/uploads/2018/03/calculator-wallpapers-2.jpg);
+      background-repeat: no-repeat;
     }
 
     .container {
@@ -65,6 +67,14 @@
         let amt = Number(amount.value);
         calculateTip(amt);
       });
+
+      button.addEventListener('mouseover', function(){
+      button.style.background = "rgb(255,127,80)";
+      })
+   
+      button.addEventListener('mouseout', function(){
+      button.style.background = "";
+      })
 
       const calculateTip = amt => {
         let tipAmount = amt * (12.6 / 100);
