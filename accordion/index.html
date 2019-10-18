@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
-
+<title>
+    Accordion example
+</title>
 <head>
     <style>
         .accordion {
@@ -8,7 +10,6 @@
             color: #333;
             cursor: pointer;
             padding: 18px;
-            width: 100%;
             border: none;
             text-align: left;
             outline: none;
@@ -16,7 +17,7 @@
             transition: 0.4s;
         }
 
-        .active,
+        /* .active, */
         .accordion:hover {
             background-color: #ce93d8;
         }
@@ -37,7 +38,7 @@
         .section {
             padding: 0 18px;
             background-color: #f8f8f8;
-            max-height: 0;
+            display: none;
             overflow: hidden;
             transition: max-height 0.2s ease-out;
         }
@@ -45,69 +46,77 @@
 </head>
 
 <body>
-
     <h2>Accordion Example</h2>
-    <button class="accordion">Section 1</button>
-    <div class="section">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec dictum ipsum, sed maximus massa.
-            Curabitur eleifend
-            lorem non posuere tristique. Maecenas vel porta augue. Phasellus lobortis ante id gravida egestas.
-            Pellentesque
-            facilisis ut odio in rhoncus. Duis ut sollicitudin massa. Aenean non nisi est. Nullam fermentum, sapien
-            posuere luctus
-            imperdiet, enim nisl vehicula dui, sit amet bibendum lectus risus in odio. Praesent sed sem tempor, pretium
-            orci in,
-            condimentum neque. Cras a magna eget erat tempus tincidunt ut quis enim. Praesent efficitur sollicitudin
-            lectus ac
-            vehicula.</p>
-    </div>
-
-    <button class="accordion">Section 2</button>
-    <div class="section">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec dictum ipsum, sed maximus massa.
-            Curabitur eleifend
-            lorem non posuere tristique. Maecenas vel porta augue. Phasellus lobortis ante id gravida egestas.
-            Pellentesque
-            facilisis ut odio in rhoncus. Duis ut sollicitudin massa. Aenean non nisi est. Nullam fermentum, sapien
-            posuere luctus
-            imperdiet, enim nisl vehicula dui, sit amet bibendum lectus risus in odio. Praesent sed sem tempor, pretium
-            orci in,
-            condimentum neque. Cras a magna eget erat tempus tincidunt ut quis enim. Praesent efficitur sollicitudin
-            lectus ac
-            vehicula.</p>
-    </div>
-
-    <button class="accordion">Section 3</button>
-    <div class="section">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec dictum ipsum, sed maximus massa.
-            Curabitur eleifend
-            lorem non posuere tristique. Maecenas vel porta augue. Phasellus lobortis ante id gravida egestas.
-            Pellentesque
-            facilisis ut odio in rhoncus. Duis ut sollicitudin massa. Aenean non nisi est. Nullam fermentum, sapien
-            posuere luctus
-            imperdiet, enim nisl vehicula dui, sit amet bibendum lectus risus in odio. Praesent sed sem tempor, pretium
-            orci in,
-            condimentum neque. Cras a magna eget erat tempus tincidunt ut quis enim. Praesent efficitur sollicitudin
-            lectus ac
-            vehicula.</p>
-    </div>
+    <section>
+        <div class="accordion">Section 1</div>
+        <div class="section">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec dictum ipsum, sed maximus massa.
+                Curabitur eleifend
+                lorem non posuere tristique. Maecenas vel porta augue. Phasellus lobortis ante id gravida egestas.
+                Pellentesque
+                facilisis ut odio in rhoncus. Duis ut sollicitudin massa. Aenean non nisi est. Nullam fermentum, sapien
+                posuere luctus
+                imperdiet, enim nisl vehicula dui, sit amet bibendum lectus risus in odio. Praesent sed sem tempor, pretium
+                orci in,
+                condimentum neque. Cras a magna eget erat tempus tincidunt ut quis enim. Praesent efficitur sollicitudin
+                lectus ac
+                vehicula
+            </p>
+        </div>
+    </section>
+    <section>
+        <div class="accordion">Section 2</div>
+        <div class="section">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec dictum ipsum, sed maximus massa.
+                Curabitur eleifend
+                lorem non posuere tristique. Maecenas vel porta augue. Phasellus lobortis ante id gravida egestas.
+                Pellentesque
+                facilisis ut odio in rhoncus. Duis ut sollicitudin massa. Aenean non nisi est. Nullam fermentum, sapien
+                posuere luctus
+                imperdiet, enim nisl vehicula dui, sit amet bibendum lectus risus in odio. Praesent sed sem tempor, pretium
+                orci in,
+                condimentum neque. Cras a magna eget erat tempus tincidunt ut quis enim. Praesent efficitur sollicitudin
+                lectus ac
+                vehicula
+            </p>
+        </div>
+    </section>
+    <section>
+        <div class="accordion">Section 3</div>
+        <div class="section">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec dictum ipsum, sed maximus massa.
+                Curabitur eleifend
+                lorem non posuere tristique. Maecenas vel porta augue. Phasellus lobortis ante id gravida egestas.
+                Pellentesque
+                facilisis ut odio in rhoncus. Duis ut sollicitudin massa. Aenean non nisi est. Nullam fermentum, sapien
+                posuere luctus
+                imperdiet, enim nisl vehicula dui, sit amet bibendum lectus risus in odio. Praesent sed sem tempor, pretium
+                orci in,
+                condimentum neque. Cras a magna eget erat tempus tincidunt ut quis enim. Praesent efficitur sollicitudin
+                lectus ac
+                vehicula
+            </p>
+        </div>
+    </section>
 
     <script>
-        var accordion = document.getElementsByClassName("accordion");
-        var i;
-        for (i = 0; i < accordion.length; i++) {
+        const accordion = document.getElementsByClassName("accordion");
+        const section = document.getElementsByClassName("section");
+        for (let i = 0; i < accordion.length; i++) {
             accordion[i].addEventListener("click", function () {
                 this.classList.toggle("active");
                 var section = this.nextElementSibling;
-                if (section.style.maxHeight) {
-                    section.style.maxHeight = null;
+                if (section.style.display === "block") {
+                    section.style.display = "none";
                 } else {
-                    section.style.maxHeight = section.scrollHeight + "px";
+                    section.style.display = "block";
                 }
             });
         }
     </script>
-
 </body>
 
 </html>
