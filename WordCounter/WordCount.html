@@ -1,0 +1,26 @@
+<html>
+<h1 style="text-align: center;">Word Counter</h1>
+<div style="text-align: center;">
+   <textarea id="textcontent" style="width: 500px; height: 200px;"></textarea>
+   <div id="countWord"></div>
+</div>
+
+<script>
+function count_word( val ){
+    var wom = val.match(/\S+/g);
+    return {
+        words : wom ? wom.length : 0
+    };
+}
+var textContent = document.getElementById("textcontent");
+var showWordCount   = document.getElementById("countWord");
+
+textContent.addEventListener("input", function(){
+  var v = count_word( this.value );
+  showWordCount.innerHTML = (
+      "<br>Words: "+ v.words
+  );
+}, false);
+</script>
+
+</html>
