@@ -1,5 +1,6 @@
 <!doctype html>
   <head>
+      <link rel="stylesheet" type="text/css" href="index.css">
     <title>Cost Split Calculator</title>
   </head>
 
@@ -7,37 +8,63 @@
     <section class="container">
       <h2>Cost Spliter</h2>
 
-      <div id="general-split">
-          <label for="people">Number of People: </label>
-          <input type='number' id="people"/>
-      </div>
+      <table id="general_split">
+        <tr>
+          <td>
+              <label for="people">Number of People: </label>
+                <input type='number' id="people"/>
+          </td>
+        </tr> 
+      </table>
       
-      <div id="percentage-split" style="display: none">
-        <label for="first_person"> Name: </label>
-          <input type="text" id="first_person"/>
-        <label>percentage: </label>
-          <input type='number' id="first_percentage"/>% <br/>
-        <label for="second_person"> Name: </label>
-          <input type="text" id="second_person"/>
-        <label>percentage: </label>
-          <input type='number' id="second_percentage"/>%
-      </div>
+      <table id="percentage_split">
+        <tr>
+          <td>
+              <label for="first_person"> Name: </label>
+                <input type="text" id="first_person"/>
 
-      <br/>
-      <label for="splitCost">Amount to Distribute: </label>
-        <input type='number' id="splitCost"/> <br/> <br/>
+              <label for="first_percentage">percentage: </label>
+                <input type='number' id="first_percentage"/>%
+          </td>
+        </tr>
+        
+        <tr>
+          <td>
+              <label for="second_person"> Name: </label>
+                <input type="text" id="second_person"/>
 
-      <label>Split By Percentage: </label> 
-        <input type="radio" id="radioBtn" value="false" /> <br/> <br/>
+              <label>percentage: </label>
+                <input type='number' id="second_percentage"/>%
+          </td>
+        </tr>
+      </table>
 
-      <button id="btn">Split!!</button>
-      <p id="textField"></p>
+      <table>
+        <tr>
+          <td>
+              <label for="splitCost">Amount to Distribute: </label>
+                <input type='number' id="splitCost"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+              <label>Split By Percentage: </label> 
+              <input type="radio" id="radioBtn" value="false" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+              <button id="btn">Split!!</button>
+                <p id="textField"></p>
+          </td>
+        </tr>
+      </table>
     </section>
 
     <script>
       const radioBtn = document.getElementById('radioBtn');
-      const generalSplit = document.getElementById('general-split');
-      const percentageSplit = document.getElementById('percentage-split');
+      const generalSplit = document.getElementById('general_split');
+      const percentageSplit = document.getElementById('percentage_split');
       const noOfPeople = document.getElementById("people");
       const splitCostField = document.getElementById("splitCost");
       const first_person = document.getElementById('first_person');
