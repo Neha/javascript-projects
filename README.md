@@ -42,4 +42,4 @@ This repo is dedicated to vanilla JavaScript projects and code snippets. If you 
 Repo is open for the PRs
 
 # Reach Me
-You can reach me at nsharma215@gmail.com or follow me at [Twitter](twitter.com/hellonehha)
+You can reach me at nsharma215@gmail.com or follow me at [Twitter](https://twitter.com/hellonehha)
