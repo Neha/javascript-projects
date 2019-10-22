@@ -69,6 +69,7 @@
         <div class="result"></div>
     </div>
 <script>
+    const NAME_MAXLEN = 15;
     const $email = document.getElementById('email');
     const $name = document.getElementById('name');
     const $phone = document.getElementById('phone');
@@ -80,14 +81,13 @@
         const data = new FormData(this);
         for (const entry of data) {
             if(entry[1].length === 0) {
-                console.log(entry[0])
                 $result.innerText = 'All field should not empty';
                 $result.classList.add('text-red');
                 return;
             }
         }
 
-        if( $name.value.length > 15 ) {
+        if( $name.value.length > NAME_MAXLEN) {
             $result.innerText = 'Name should not longer than 15 charaters';
             $result.classList.add('text-red');
             return;
