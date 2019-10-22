@@ -5,6 +5,10 @@
 </title>
 <head>
     <style>
+        section {
+            margin: 5px 0;
+        }
+        
         .accordion {
             background-color: #f3e5f5;
             color: #333;
@@ -35,7 +39,7 @@
             content: "\25BC";
         }
 
-        .section {
+        .segment {
             padding: 0 18px;
             background-color: #f8f8f8;
             display: none;
@@ -49,7 +53,7 @@
     <h2>Accordion Example</h2>
     <section>
         <div class="accordion">Section 1</div>
-        <div class="section">
+        <div class="segment">
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec dictum ipsum, sed maximus massa.
                 Curabitur eleifend
@@ -67,7 +71,7 @@
     </section>
     <section>
         <div class="accordion">Section 2</div>
-        <div class="section">
+        <div class="segment">
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec dictum ipsum, sed maximus massa.
                 Curabitur eleifend
@@ -85,7 +89,7 @@
     </section>
     <section>
         <div class="accordion">Section 3</div>
-        <div class="section">
+        <div class="segment">
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec dictum ipsum, sed maximus massa.
                 Curabitur eleifend
@@ -104,15 +108,15 @@
 
     <script>
         const accordion = document.getElementsByClassName("accordion");
-        const section = document.getElementsByClassName("section");
+        const segment = document.getElementsByClassName("segment");
         for (let i = 0; i < accordion.length; i++) {
             accordion[i].addEventListener("click", function () {
                 this.classList.toggle("active");
-                var section = this.nextElementSibling;
-                if (section.style.display === "block") {
-                    section.style.display = "none";
+                const segment = this.nextElementSibling;
+                if (segment.style.display === "block") {
+                    segment.style.display = "none";
                 } else {
-                    section.style.display = "block";
+                    segment.style.display = "block";
                 }
             });
         }
