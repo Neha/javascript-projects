@@ -2,58 +2,15 @@
 <html>
   <head>
     <title>Tip Calculator</title>
+    <link rel = "stylesheet" type="text/css" href="calci.css">
   </head>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      color: #000;
-      font: 12px arial;
-      display: flex;
-      height: 100vh;
-      flex-direction: column;
-      justify-content: center;
-      align-content: center;
-    }
-
-    .container {
-      width: 60%;
-      margin: 0 auto;
-      height: 300px;
-      background: cyan;
-      padding: 10px;
-      border-radius: 20px;
-    }
-
-    .container h2 {
-      margin: 20px 0;
-      text-align: center;
-    }
-    button {
-      padding: 10px;
-      margin: 10px auto;
-      border-radius: 10px;
-    }
-
-    .content {
-      display: flex;
-      flex-direction: column;
-    }
-
-    input[type='number'] {
-      padding: 10px;
-    }
-  </style>
   <body>
     <section class="container">
       <div class="content">
         <h2>Tip calculation</h2>
         <input id="amount" type="number" placeholder="amount" />
         <button>Calculate</button>
-        <p id="amountText">fdfsdf</p>
+        <p id="amountText">Now Calculation Becomes Simpler !</p>
       </div>
     </section>
     <script>
@@ -65,6 +22,14 @@
         let amt = Number(amount.value);
         calculateTip(amt);
       });
+
+      button.addEventListener('mouseover', function(){
+      button.style.background = "rgb(255,127,80)";
+      })
+   
+      button.addEventListener('mouseout', function(){
+      button.style.background = "";
+      })
 
       const calculateTip = amt => {
         let tipAmount = amt * (12.6 / 100);
