@@ -1,0 +1,57 @@
+ .app {
+     width: 100%;
+     padding-right: 15px;
+     padding-left: 15px;
+     margin-left: auto;
+     margin-right: auto;
+ }
+ 
+ @media(min-width: 576px) {
+     .app {
+         max-width: 540px;
+     }
+ }
+ 
+ @media(min-width: 768px) {
+     .app {
+         max-width: 720px;
+     }
+ }
+ 
+ @media(min-width: 992px) {
+     .app {
+         max-width: 960px;
+     }
+ }
+ 
+ @media(min-width: 1200px) {
+     .app {
+         max-width: 1140px;
+     }
+ }
+ 
+ .app__taskHeader {
+     margin-top: 2rem;
+     display: flex;
+     flex-direction: row;
+ }
+ 
+ .subtaskContainer {
+     margin-top: 1rem;
+     width: 100%;
+     display: flex;
+ }
+ 
+ .subtaskContainer span {
+     width: 80%;
+ }
+ 
+ .subtaskContainer button {
+     width: 10%;
+     margin: .1rem;
+ }
+ 
+ #taskDesc {
+     width: 100%;
+     padding: .375rem .75rem;
+ }
