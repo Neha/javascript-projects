@@ -47,16 +47,16 @@ input[type="radio"]:checked + div {
       <div class='byPercent'>
         <div>
           <input type='text' id="name" placeholder="Name" />
-          <input type='number' id="person1" placeholder="%" />
+          <input type='number' id="firstPerson" placeholder="%" />
         </div>
         <div>
           <input type='text' id="name" placeholder="Name" />
-          <input type='number' id="person2" placeholder="%" />
+          <input type='number' id="secondPerson" placeholder="%" />
         </div>
         <button id='percentBtn'>Split</button>
         <p class='error'></p>
-        <p id='amount1'></p>
-        <p id='amount2'></p>
+        <p id='firstPersonAmount'></p>
+        <p id='secondPersonAmount'></p>
       </div>
     </section>
 
@@ -66,10 +66,10 @@ input[type="radio"]:checked + div {
     const splitCostField = document.getElementById("splitCost");
     const button = document.querySelector('button');
     const textField = document.querySelector("#textField");
-    const amount1 = document.querySelector('#amount1');
-    const amount2 = document.querySelector('#amount2');
-    const person1 = document.querySelector('#person1');
-    const person2 = document.querySelector('#person2');
+    const firstPersonAmount = document.querySelector('#firstPersonAmount');
+    const secondPersonAmount = document.querySelector('#secondPersonAmount');
+    const firstPerson = document.querySelector('#firstPerson');
+    const secondPerson = document.querySelector('#secondPerson');
     const radioBtns = document.querySelectorAll('input[type=radio]');
     const percentBtn = document.querySelector('#percentBtn');
     const names = document.querySelectorAll('input[id=name]');
@@ -93,22 +93,22 @@ input[type="radio"]:checked + div {
 
     const splitPercentage = () => {
       let amount = +amountField.value;
-      let first = +person1.value / 100;
-      let second = +person2.value / 100;
+      let first = +firstPerson.value / 100;
+      let second = +secondPerson.value / 100;
       let error = document.querySelector('.error');
 
       if (first > 1 || second > 1) {
         return error.innerHTML = 'The percentage entered must be less than 100%. Please try again.';
       }
       if (first) {
-        person2.value = 100 - person1.value;
-        second = +person2.value / 100;
+        secondPerson.value = 100 - firstPerson.value;
+        second = +secondPerson.value / 100;
       } else {
-        person1.value = 100 - person2.value;
-        first = +person1.value / 100;
+        firstPerson.value = 100 - secondPerson.value;
+        first = +firstPerson.value / 100;
       }
-      amount1.innerHTML = `${names[0].value || 'Person1'} will pay ${Number(first * amount).toFixed(2)}`;
-      amount2.innerHTML = `${names[1].value || 'Person2'} will pay ${Number(second * amount).toFixed(2)}`;
+      firstPersonAmount.innerHTML = `${names[0].value || 'One person'} will pay ${+(first * amount).toFixed(2)}`;
+      secondPersonAmount.innerHTML = `${names[1].value || 'The other person'} will pay ${+(second * amount).toFixed(2)}`;
     }
 
 
