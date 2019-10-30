@@ -1,33 +1,41 @@
-<!doctype html>
-<head>
-<title>Color Picker</title>
-</head>
-<style>
-*{
-  margin:0;
-  padding:0;
-}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Color Picker</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
 
-#color{
-  height:30px;
-  width:100%;
-  padding:10px;
-  text-align:center;
-  background:red;
-  margin:10px 0;
-}
-</style>
-<body>
-  <div id="color">Look Maa!! I am changing color.</div>
-  <input type="range" min="0" max="360" value="0"  steps="4" id="rangeHandler"/> 
- <script>
-  const colorBox = document.getElementById('color');
-  const rangeHandler = document.getElementById('rangeHandler');
-  
-  rangeHandler.addEventListener('mousemove', function(){
-    let colorNewVal = Number(this.value); 
-    color.style.background = `hsl(${colorNewVal},50%, 60%)`;
-  })
-</script>
-</body>
+    #color {
+      height: 30px;
+      width: 100%;
+      padding: 10px;
+      text-align: center;
+      background: red;
+      margin: 10px 0;
+    }
+  </style>
+  <body>
+    <div id="color">Look Maa!! I am changing color.</div>
+    <input
+      type="range"
+      min="0"
+      max="360"
+      value="0"
+      steps="4"
+      id="rangeHandler"
+    />
+    <script>
+      const colorBox = document.getElementById('color');
+      const rangeHandler = document.getElementById('rangeHandler');
+
+      rangeHandler.addEventListener('mousemove', function() {
+        let colorNewVal = Number(this.value);
+        color.style.background = `hsl(${colorNewVal},50%, 60%)`;
+      });
+    </script>
+  </body>
 </html>

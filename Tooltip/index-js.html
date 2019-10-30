@@ -1,61 +1,58 @@
-<!doctype html>
-<head>
-<title>Color Picker :: JS</title>
-</head>
-<style>
-*{
-  margin:0;
-  padding:0;
-}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Color Picker :: JS</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
 
-button{
-  padding:10px;
-  border-radius:10px;
-  background-color:aquamarine;
-  box-shadow:2px 2px 2px #000;
-  text-transform: uppercase;
-  line-height:42px;
-  position: absolute;
-}
+    button {
+      padding: 10px;
+      border-radius: 10px;
+      background-color: aquamarine;
+      box-shadow: 2px 2px 2px #000;
+      text-transform: uppercase;
+      line-height: 42px;
+      position: absolute;
+    }
 
+    #tooltip {
+      z-index: 10;
+      width: 100px;
+      padding: 10px;
+      display: none;
+      background: #ccc;
+      position: relative;
+      top: 45px;
+      border-radius: 5px;
+    }
 
-
-#tooltip{
-  z-index:10;
-  width:100px;
-  padding:10px;
-  display:none;
-  background:#ccc;
-  position: relative;
-  top:45px;
-  border-radius:5px;
-}
-
-#container{
-  display:flex;
-  width:80%;
-  margin:0 auto;
-  justify-content: center;
-  align-items: center;
-  height:100vh;
-}
-</style>
-<body>
-  <section id="container">
+    #container {
+      display: flex;
+      width: 80%;
+      margin: 0 auto;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+  </style>
+  <body>
+    <section id="container">
       <button>Hover me Please</button>
       <div id="tooltip">Hello!! I am toolyip</div>
-  </section>
+    </section>
     <script>
       const btn = document.querySelector('button');
       const tooltip = document.querySelector('#tooltip');
-      btn.addEventListener("mouseover",function(){
+      btn.addEventListener('mouseover', function() {
         tooltip.style.display = 'block';
-        
-      })
-      btn.addEventListener("mouseout",function(){
+      });
+      btn.addEventListener('mouseout', function() {
         tooltip.style.display = 'none';
-        
-      })
+      });
     </script>
-</body>
+  </body>
 </html>

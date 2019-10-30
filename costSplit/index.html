@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <head>
   <title>Cost Split Calculator</title>
@@ -21,7 +21,7 @@ input[type="radio"]:checked + div {
 
 <body>
   <main class="container">
-    <h2>Cost Spliter</h2>
+    <h2>Cost Splitter</h2>
     <section>
       <!-- amount to split -->
       <label for='amt'>Amount
@@ -29,8 +29,8 @@ input[type="radio"]:checked + div {
       </label>
       <!-- choice of how to split -->
       <div>
-        <label for="splitCost2">Split cost by person</label>
-        <input type="radio" id="splitCost2" name="split-cost" value="byPerson" checked>
+        <label for="splitByPerson">Split cost by person</label>
+        <input type="radio" id="splitByPerson" name="split-cost" value="byPerson" checked>
 
         <div class='byPerson'>
           <label for=people>Number of people<input type='number' id="splitCost" /></label>
@@ -41,8 +41,8 @@ input[type="radio"]:checked + div {
     </section>
 
     <section>
-      <label for="splitCost1">Split cost by percent</label>
-      <input type="radio" id="splitCost1" name="split-cost" value="byPercent">
+      <label for="splitByPercent">Split cost by percent</label>
+      <input type="radio" id="splitByPercent" name="split-cost" value="byPercent">
 
       <div class='byPercent'>
         <div>
@@ -66,17 +66,6 @@ input[type="radio"]:checked + div {
     const splitCostField = document.getElementById("splitCost");
     const button = document.querySelector('button');
     const textField = document.querySelector("#textField");
-
-    button.addEventListener('click', () => {
-      let amount = Number(amountField.value);
-      let splitCost = Number(splitCostField.value);
-
-      const indvAmt = calculateAmount(amount, splitCost);
-
-      const text = `Every person needs to pay ${indvAmt}`
-      textField.innerHTML = text;
-    });
-
     const amount1 = document.querySelector('#amount1');
     const amount2 = document.querySelector('#amount2');
     const person1 = document.querySelector('#person1');
@@ -84,6 +73,22 @@ input[type="radio"]:checked + div {
     const radioBtns = document.querySelectorAll('input[type=radio]');
     const percentBtn = document.querySelector('#percentBtn');
     const names = document.querySelectorAll('input[id=name]');
+
+    button.addEventListener('click', () => {
+      let amount = +amountField.value;
+      let splitCost = +splitCostField.value;
+
+      const indvAmt = calculateAmount(amount, splitCost);
+
+      const text = `Every person needs to pay ${indvAmt}`
+      textField.innerHTML = text;
+    });
+
+    //onclick will calculate the amount and correct the percentages
+    percentBtn.addEventListener('click', () => {
+      let amount = +amountField.value;
+      splitPercentage();
+    })
 
 
     const splitPercentage = () => {
@@ -105,11 +110,7 @@ input[type="radio"]:checked + div {
       amount1.innerHTML = `${names[0].value || 'Person1'} will pay ${Number(first * amount).toFixed(2)}`;
       amount2.innerHTML = `${names[1].value || 'Person2'} will pay ${Number(second * amount).toFixed(2)}`;
     }
-    //onclick will calculate the amount and correct the percentages
-    percentBtn.addEventListener('click', () => {
-      let amount = Number(amountField.value);
-      splitPercentage();
-    })
+
 
     const calculateAmount = (amount, splitCost) => {
       let indvi_amt = amount / splitCost;
