@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Progressbar</title>
+    <style>
+
+        /* For DEMO only */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+        }
+
+        body {
+            background: #F9FAFC;
+        }
+
+        .title {
+            font-weight: 500;
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .demo-buttons {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        button {
+            -webkit-appearance: none;
+            outline: none;
+            border-radius: 3px;
+            background-color: #2E89FF;
+            vertical-align: middle;
+            padding: 8px 12px 7px;
+            border: none;
+            color: #fff;
+            font-size: 14px;
+            min-width: 25%;
+            height: 36px;
+            border-radius: 4px;
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+            margin: 0 5px 5px;
+            cursor: pointer;
+            transition: box-shadow 0.3s, background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #3F93FF;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, .1);
+        }
+
+        button:active {
+            background-color: #2E89FF;
+        }
+
+        .wrapper {
+            max-width: 720px;
+            padding: 50px;
+            margin: 0 auto;
+        }
+
+        .progress-demo-values {
+            font-size: 14px;
+            font-weight: 400;
+            color: #555;
+            position: relative;
+            margin: 10px 0;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .values { float: left; }
+        .percentage { float: right; }
+
+        .values span {
+            margin-right: 3px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .flex {
+            display: flex;
+            justify-content: center;
+        }
+
+        .demo-buttons label {
+            display: block;
+            margin-bottom: 5px;
+            color: #444;
+        }
+
+        input {
+            -webkit-appearance: none;
+            border: 1px solid #E3E3E3;
+            outline: none;
+            border-radius: 4px;
+            height: 32px;
+            width: 100%;
+            display: block;
+            padding: 0 10px;
+            transition: 100ms border-color ease;
+            will-change: border-color;
+        }
+
+        input:active, input:focus {
+            border-color: #2E89FF;
+        }
+
+        .group {
+            padding: 0 10px;
+        }
+
+        .demo-buttons.flex button {
+            width: 100%;
+            margin: 5px 0;
+        }
+
+        /* Progressbar style */
+
+        .progressbar {
+            width: 100%;
+            height: 6px;
+            position: relative;
+            background-color: #F0F0F0;
+            border: 1px solid #E3E3E3;
+            border-radius: 4px;
+        }
+
+        .progressbar__value {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0%;
+            background-color: #8CD670;
+            transition: 100ms width linear;
+            will-change: width;
+        }
+    </style>
+
+    <script>
+
+        var Progressbar = function(container, options) {
+
+            var self = this;
+
+            // If the first parameter (container) is an object, consider it as options
+            if(Object.prototype.toString.call(container) == "[object Object]") {
+                options = container;
+            }
+
+            let _defaults = {
+                "container": "#progressbar-container",
+                "progressValueElm": ".progressbar__value",
+                "max": 100,
+                "min": 0,
+                "value": 0,
+                "percentage": 0,
+                "progressColor": "#8CD670",
+                "progressBackground": "#F0F0F0",
+                "progressBorderColor": "#E3E3E3"
+            }
+
+            // Override defaults with user defined configuration
+            this.options = Object.assign({}, _defaults, options);
+
+            if(typeof container == "string") {
+                this.options.container = container;
+            }
+
+            let containerElm = document.querySelector(this.options.container);
+            if(!containerElm) {
+                containerElm = document.createElement("div");
+                containerElm.className = "progressbar";
+                document.body.appendChild(containerElm);
+            }
+
+            this.options.container = containerElm;
+
+            // If container element doesn't have any .progressbar__value element, create one and append it
+            // to container
+            if(Array.from(containerElm.children).every(elm => {
+                return !elm.classList.contains("progressbar__value");
+            })) {
+                let progressbarValueElm = document.createElement("div");
+                progressbarValueElm.className = "progressbar__value";
+                this.options.progressValueElm  = progressValueElm;
+                containerElm.appendChild(progressbarValueElm);
+            } else {
+                this.options.progressValueElm = containerElm.querySelector(".progressbar__value");
+            }
+
+            this.sanitizeInput = function(input) {
+                return parseFloat(input.toString().replace(",",".").match(/\d+(\.\d+)?/g)[0]);
+            }
+
+            // Event handler
+           this.events = {}
+
+           this.on = function(event, callback) {
+               if(!this.events[event]) {
+                   this.events[event] = [];
+               }
+
+               this.events[event].push(callback);
+
+               return this;
+           }
+
+           this.once = function(event, callback) {
+               callback._once = true;
+
+               if(!this.events[event]) {
+                   this.events[event] = [];
+               }
+
+               this.events[event].push(callback);
+
+               return this;
+           }
+
+           this.trigger = function(event, ...values) {
+               values = values || null;
+               if(this.events[event]) {
+                   var onceRemoveQueue = [];
+
+                   for(var i = 0; i < this.events[event].length; i++) {
+                       this.events[event][i].apply(null, values);
+
+                       if(true === this.events[event][i]._once) {
+                           onceRemoveQueue.push(this.events[event][i]);
+                       }
+                   }
+
+                   for(var i = 0; i < onceRemoveQueue.length; i++) {
+                       var onceIndex = this.events[event].indexOf(onceRemoveQueue[i]);
+                       this.events[event].splice(onceIndex, 1);
+                   }
+
+               }
+           }
+
+        }
+
+        Progressbar.prototype.setMax = function(value) {
+            value = this.sanitizeInput(value);
+            this.trigger('maxChange', value, this.options.max);
+            this.options.max = value;
+            this.setValue(this.options.value, "user");
+            return this;
+        }
+
+        Progressbar.prototype.getMax = function() { return this.options.max }
+
+        Progressbar.prototype.setMin = function(value) {
+            value = this.sanitizeInput(value);
+            this.trigger('minChange', value, this.options.min);
+            this.options.min = value;
+            this.setValue(this.options.value, "user");
+            return this;
+        }
+        Progressbar.prototype.getMin = function() { return this.options.min }
+
+        Progressbar.prototype.setValue = function(value, source) {
+            source = source || "auto";
+            value = Math.max(this.options.min, Math.min(this.options.max, this.sanitizeInput(value)));
+            let newValue = ((value - this.options.min) * 100) / (this.options.max - this.options.min);
+            this.options.value = value;
+            this.setPercentage(newValue, source);
+        }
+        Progressbar.prototype.getValue = function() { return this.options.value }
+
+        Progressbar.prototype.addValue = function(value, source) {
+            source = source || "auto";
+            value = this.sanitizeInput(value) + this.options.value;
+            this.setValue(value, source);
+        }
+
+        Progressbar.prototype.setPercentage = function(percentage, source) {
+            source = source || "user";
+            percentage = Math.max(0, Math.min(100, this.sanitizeInput(percentage))).toFixed(2);
+
+            if(source == "user") {
+                // If user directly sets the percentage, calculate the pointing value then set it
+                this.options.value = Math.floor((percentage * (this.options.max - this.options.min) / 100) + this.options.min);
+            }
+            this.options.percentage = percentage;
+            this.trigger("change", this.options.value, this.options.percentage);
+
+            if(percentage == 100) {
+                this.trigger("done", this);
+            }
+            this.options.progressValueElm.style.width = (percentage + "%")
+        }
+        Progressbar.prototype.getPercentage = function() { return this.options.percentage }
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">
+            <span>Progressbar</span>
+        </div>
+
+        <!-- Actual Progressbar -->
+        <div id="progressbar-container" class="progressbar">
+            <div class="progressbar__value"></div>
+        </div>
+
+        <p class="progress-demo-values">
+            <span class="values">
+                <span id="current"></span><span>/</span><span id="max"></span>
+            </span>
+
+            <span class="percentage">
+                <span id="percentage"></span>
+                <span>%</span>
+            </span>
+        </p>
+
+        <!-- Demo Buttons -->
+        <div class="demo-buttons">
+            <button id="set-25">Set value to 25</button>
+            <button id="set-50">Set value to 50</button>
+            <button id="set-100">Set value to 100</button>
+        </div>
+        <div class="demo-buttons">
+            <button id="change-over-time">Change value over time</button>
+        </div>
+        <div class="demo-buttons flex">
+            <div class="group">
+                <label for="min-value">Min</label>
+                <input id="min-value" type="text">
+                <button id="set-min">Set</button>
+            </div>
+            <div class="group">
+                <label for="max-value">Max</label>
+                <input id="max-value" type="text">
+                <button id="set-max">Set</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let progressbar = new Progressbar("#progressbar-container");
+        progressbar.percentage = 42;
+
+        // Demo
+        progressbar.on("change", function(value, percentage) {
+            document.querySelector("#current").innerText = value;
+            document.querySelector("#percentage").innerText = percentage;
+        });
+
+        progressbar.on("done", function(barObj) {
+            console.log("Progress is done", barObj);
+
+            clearInterval(changeOverTimeInterval);
+        });
+
+        progressbar.on("maxChange", function(current, previous) {
+            console.log("Max value changed", "Current:", current, "Previous:", previous);
+            document.querySelector("#max").innerText = current;
+        });
+
+        progressbar.on("minChange", function(current, previous) {
+            console.log("Min value changed", "Current:", current, "Previous:", previous);
+        });
+
+        document.querySelector("#current").innerText = progressbar.getValue();
+        document.querySelector("#max").innerText = progressbar.getMax();
+
+        document.querySelector("#min-value").value = progressbar.getMin();
+        document.querySelector("#max-value").value = progressbar.getMax();
+
+        document.querySelector("#percentage").innerText = progressbar.getPercentage();
+
+        // Demo Button Actions
+        document.querySelector("#set-25").onclick = () => progressbar.setValue(25);
+        document.querySelector("#set-50").onclick = () => progressbar.setValue(50);
+        document.querySelector("#set-100").onclick = () => progressbar.setValue(100);
+
+        document.querySelector("#set-min").onclick = () => progressbar.setMin(document.querySelector("#min-value").value);
+        document.querySelector("#set-max").onclick = () => progressbar.setMax(document.querySelector("#max-value").value);
+
+        document.querySelector("#max-value").onkeypress = (_) => /[0-9\.\,]+/.test(_.key);
+        document.querySelector("#min-value").onkeypress = (_) => /[0-9\.\,]+/.test(_.key);
+
+        let changeOverTimeInterval = null;
+        document.querySelector("#change-over-time").onclick = () => {
+            progressbar.setValue(0);
+
+            clearInterval(changeOverTimeInterval);
+            changeOverTimeInterval = setInterval(function() {
+                progressbar.addValue(Math.floor(Math.random() * 10));
+            }, 50);
+        }
+
+    </script>
+
+</body>
+</html>
