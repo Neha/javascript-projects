@@ -1,0 +1,34 @@
+body{
+    font-family: 'Roboto';
+}
+
+.header{
+    text-align: center;
+}
+
+.button{ width: 85px; cursor: pointer; margin: 1px; }
+.buttonGray {background-color: #e7e7e7; color: black; border: 1px solid black;} /* Gray */
+.buttonRed {background-color: #f44336; color: white; border: 1px solid black;} /* Red */
+.buttonGreen {background-color: green; color: white; border: 1px solid black;} /* Green */
+
+table{
+    border-collapse: collapse;
+    text-align: center;
+}
+thead{
+    text-align: center;
+}
+
+table#toDoListTable td:nth-child(3){
+    width: 175px;
+}
+
+table#toDoStatusTable{
+    text-align: center;
+    width: 658px;
+}
+
+.taskCards{
+    border: 1px solid black;
+    margin: 2px;
+}
