@@ -1,42 +1,40 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Color Picker</title>
-  </head>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-    }
 
-    #color {
-      height: 30px;
-      width: 100%;
-      padding: 10px;
-      text-align: center;
-      background: red;
-      margin: 10px 0;
-    }
-  </style>
-  <body>
-    <div id="color">
-      Enter any poisitive number from 0 to 360 and see the magic
-    </div>
-    <input
-      type="text"
-      value="12"
-      placeholder="enter some numeric value.."
-      id="colorVal"
-    />
-    <script>
-      const colorBox = document.getElementById('color');
-      const hueValue = 120;
-      const colorVal = document.getElementById('colorVal');
+<head>
+  <title>Color Picker</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
 
-      colorVal.addEventListener('blur', function() {
-        let colorNewVal = Number(this.value);
-        color.style.background = `hsl(${colorNewVal},50%, 60%)`;
-      });
-    </script>
-  </body>
+  #color {
+    height: 30px;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background: red;
+    margin: 10px 0;
+  }
+</style>
+
+<body>
+  <div id="color">
+    Enter any poisitive number from 0 to 360 and see the magic
+  </div>
+  <input type="text" value="12" placeholder="enter some numeric value.." id="colorVal" />
+  <script>
+    const colorBox = document.getElementById('color');
+    const hueValue = 120;
+    const colorVal = document.getElementById('colorVal');
+
+    colorVal.addEventListener('blur', function () {
+      let colorNewVal = Number(this.value);
+      color.style.background = `hsl(${colorNewVal},50%, 60%)`;
+    });
+  </script>
+</body>
+
 </html>
