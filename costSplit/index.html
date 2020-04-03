@@ -1,37 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Cost Split Calculator</title>
-  </head>
 
-  <body>
-    <section class="container">
-      <h2>Cost Spliter</h2>
-      <input type="number" id="amt" />
-      <input type="number" id="splitCost" />
-      <button id="btn">Split!!</button>
-      <p id="textField"></p>
-    </section>
-    <script>
-      const amountField = document.getElementById('amt');
-      const splitCostField = document.getElementById('splitCost');
-      const button = document.querySelector('button');
-      const textField = document.querySelector('#textField');
+<head>
+  <title>Cost Split Calculator</title>
+</head>
 
-      button.addEventListener('click', () => {
-        let amount = Number(amountField.value);
-        let splitCost = Number(splitCostField.value);
+<body>
+  <section class="container">
+    <h2>Cost Spliter</h2>
+    <input type="number" id="amt" />
+    <input type="number" id="splitCost" />
+    <button id="btn">Split!!</button>
+    <p id="textField"></p>
+  </section>
+  <script>
+    const amountField = document.getElementById('amt');
+    const splitCostField = document.getElementById('splitCost');
+    const button = document.querySelector('button');
+    const textField = document.querySelector('#textField');
 
-        const indvAmt = calculateAmount(amount, splitCost);
+    button.addEventListener('click', () => {
+      let amount = Number(amountField.value);
+      let splitCost = Number(splitCostField.value);
 
-        const text = `Every person needs to pay ${indvAmt}`;
-        textField.innerHTML = text;
-      });
+      const indvAmt = calculateAmount(amount, splitCost);
 
-      const calculateAmount = (amount, splitCost) => {
-        let indvi_amt = amount / splitCost;
-        return indvi_amt;
-      };
-    </script>
-  </body>
+      const text = `Every person needs to pay ${indvAmt}`;
+      textField.innerHTML = text;
+    });
+
+    const calculateAmount = (amount, splitCost) => {
+      let indvi_amt = amount / splitCost;
+      return indvi_amt;
+    };
+  </script>
+</body>
+
 </html>
