@@ -1,81 +1,85 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Tip Calculator</title>
-  </head>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-    }
 
-    body {
-      color: #000;
-      font: 12px arial;
-      display: flex;
-      height: 100vh;
-      flex-direction: column;
-      justify-content: center;
-      align-content: center;
-    }
+<head>
+  <title>Tip Calculator</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
 
-    .container {
-      width: 60%;
-      margin: 0 auto;
-      height: 300px;
-      background: cyan;
-      padding: 10px;
-      border-radius: 20px;
-    }
+  body {
+    color: #000;
+    font: 12px arial;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+  }
 
-    .container h2 {
-      margin: 20px 0;
-      text-align: center;
-    }
-    button {
-      padding: 10px;
-      margin: 10px auto;
-      border-radius: 10px;
-    }
+  .container {
+    width: 60%;
+    margin: 0 auto;
+    height: 300px;
+    background: cyan;
+    padding: 10px;
+    border-radius: 20px;
+  }
 
-    .content {
-      display: flex;
-      flex-direction: column;
-    }
+  .container h2 {
+    margin: 20px 0;
+    text-align: center;
+  }
 
-    input[type='number'] {
-      padding: 10px;
-    }
-  </style>
-  <body>
-    <section class="container">
-      <div class="content">
-        <h2>Tip calculation</h2>
-        <input id="amount" type="number" placeholder="amount" />
-        <button>Calculate</button>
-        <p id="amountText">fdfsdf</p>
-      </div>
-    </section>
-    <script>
-      const amount = document.getElementById('amount');
-      const button = document.querySelector('button');
-      const amountText = document.getElementById('amountText');
+  button {
+    padding: 10px;
+    margin: 10px auto;
+    border-radius: 10px;
+  }
 
-      button.addEventListener('click', () => {
-        let amt = Number(amount.value);
-        calculateTip(amt);
-      });
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
 
-      const calculateTip = amt => {
-        let tipAmount = amt * (12.6 / 100);
-        calculateTotalAmout(tipAmount, amt);
-      };
+  input[type='number'] {
+    padding: 10px;
+  }
+</style>
 
-      const calculateTotalAmout = (tipAmount, amt) => {
-        const payableAmount = amt + tipAmount;
-        let finaltext = `Tip payable is ${tipAmount} and total amount to be paid ${payableAmount}`;
-        amountText.innerHTML = finaltext;
-      };
-    </script>
-  </body>
+<body>
+  <section class="container">
+    <div class="content">
+      <h2>Tip calculation</h2>
+      <input id="amount" type="number" placeholder="amount" />
+      <button>Calculate</button>
+      <p id="amountText">fdfsdf</p>
+    </div>
+  </section>
+  <script>
+    const amount = document.getElementById('amount');
+    const button = document.querySelector('button');
+    const amountText = document.getElementById('amountText');
+
+    button.addEventListener('click', () => {
+      let amt = Number(amount.value);
+      calculateTip(amt);
+    });
+
+    const calculateTip = amt => {
+      let tipAmount = amt * (12.6 / 100);
+      calculateTotalAmout(tipAmount, amt);
+    };
+
+    const calculateTotalAmout = (tipAmount, amt) => {
+      const payableAmount = amt + tipAmount;
+      let finaltext = `Tip payable is ${tipAmount} and total amount to be paid ${payableAmount}`;
+      amountText.innerHTML = finaltext;
+    };
+  </script>
+</body>
+
 </html>
