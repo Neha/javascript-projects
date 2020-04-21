@@ -1,0 +1,108 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  body{
+      padding: 1% 10%;
+      font-family: 'Cormorant', serif;
+  }
+  
+  .container{
+      width: 80%;
+      height: 600px;
+      margin: 0 auto;
+      border-radius:  100% 0% 75% 25% / 11% 65% 35% 89% ;
+      background-color: #4770ff;
+     /*  clip-path: polygon(50% 0%, 100% 0, 100% 65%, 50% 92%, 0 87%, 0 0); */
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+    
+  }
+  
+  .app{
+      width: 70%;
+      margin-top: 2rem;
+      position: absolute;
+      border-radius: 5px;
+      top: 5rem;
+      left: 5rem;
+      transform: translateX(3rem);
+      grid-column: 1/4;   
+      box-shadow: 1px 12px 33px 1px rgba(32,32,32,0.51);
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem;
+      overflow: hidden;
+      word-wrap: break-word
+  
+  }
+  
+  .app h1{
+      font-size: 1.7rem;
+      font-family: 'Lobster', cursive;;
+      color: #fff;
+      letter-spacing: 2.5px;
+      padding: 1rem .5rem 1rem 0;
+  }
+  
+  .app form{
+      margin-top: 1rem;
+  }
+  
+  .app form input{
+      border: none;
+      background-color: transparent;
+      border-bottom: 1px solid #fff;
+      outline: none;
+  }
+  
+  .app ul{
+      list-style: none;
+      margin-top: 1.5rem;
+  }
+  
+  /* li{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .tick{
+      grid-column: 1/2;
+  }
+  
+  label{
+      grid-column: 1/2;
+  }
+  
+  span{
+     grid-column: 2/3;
+     grid-row: 1/2;
+     
+  }
+  
+  button{
+      grid-column: 3/4;
+      grid-row: 1/2;
+     
+  } */
+  
+  .call{
+      grid-column: 4/-1;
+      font-size: 2rem;
+      color: rgb(255, 255, 255);
+      position: absolute;
+      top: 5rem;
+      left: 5rem;
+  }
+  
+  .checked span{
+      text-decoration: line-through;
+      color: #ccc;
+  }
+  
+  
+  
+  
