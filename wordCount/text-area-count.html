@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <textarea name="" id="textarea-input" cols="30" rows="10"></textarea>
+    <p>Word counter : <span id="counter">0</span></p>
+</body>
+<script>
+    var textareaInput = document.getElementById('textarea-input')
+    textareaInput.onkeyup = function() {
+        document.getElementById('counter').innerHTML = this.value.length;
+    };
+</script>
+</html>
