@@ -3,40 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <title>JSProjects by Neha</title>
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-                font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
-            }
-
-            body {
-                padding: 20px;
-                background: #F9FAFC;
-            }
-
-            ul {
-                margin-top: 20px;
-            }
-
-            ul li {
-                list-style: none;
-                margin-bottom: 5px;
-            }
-
-            .container a {
-                color: #2E89FF;
-                text-decoration: none;
-            }
-
-        </style>
+        <link rel="stylesheet" href="assets/css/main.css" />
     </head>
     <body>
         <section class="container">
 
           <h2>Javascript Projects</h2>
-          <ul>
+          <ul class="main-list">
             <li><a href="tipCalculator/index.html">Tip Calculator</a></li>
             <li><a href="costSplit/index.html">Cost Spliter Calculator</a></li>
             <li><a href="Slider/index.html">Slider</a></li>
@@ -46,15 +19,6 @@
           </ul>
         </section>
 
-        <script>
-            // Sort Projects alphabetically
-            var projects = Array.from(document.querySelectorAll('.container > ul > li'));
-
-            projects.sort((a,b) => {
-                return ('' + a.querySelector("a").innerText).localeCompare(b.querySelector("a").innerText);
-            });
-
-            projects.forEach(p => document.querySelector('.container > ul').appendChild(p));
-        </script>
+        <script src="assets/js/index.js"></script>
     </body>
 </html>
