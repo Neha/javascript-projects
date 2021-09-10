@@ -1,14 +1,14 @@
-# NO Framework Please - Javascript Only :computer:
+# 🙅🏻‍♀️ NO Framework Please - Javascript Only 👩🏽‍💻
 
 This repo is dedicated to vanilla JavaScript projects and code snippets. If you are looking to pratice, or just want to start then this repo is for you. The idea is to practise with vanilla JavaScript.
 
-# Tech Stack
+# 💻 Tech Stack
 
 - HTML5
 - CSS
 - JavaScript
 
-# Projects Ideas
+# 💡 Projects Ideas
 
 1.  Tip calculator :white_check_mark:
 2.  Cost split :white_check_mark:
@@ -38,10 +38,10 @@ This repo is dedicated to vanilla JavaScript projects and code snippets. If you 
 26. Word count
 27. Search for word in a page
 
-# Contribution
+# 🤝 Contribution
 
-Repo is open for the PRs. Please check the contribution guidlines
+Repo is open for the PRs. Please check the [contribution guidlines](https://github.com/Neha/javascript-projects/blob/master/CONTRIBUTION.md)
 
-# Reach Me
+# ❤️ Reach Me
 
 You can reach me at nsharma215@gmail.com or follow me at [Twitter](https://twitter.com/hellonehha)
