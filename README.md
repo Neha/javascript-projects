@@ -1,4 +1,4 @@
-# 🙅🏻‍♀️ NO Framework Please - Javascript Only 👩🏽‍💻
+# 🙅🏻‍♀️ NO Framework Please!! JavaScript Only 👩🏽‍💻
 
 This repo is dedicated to vanilla JavaScript projects and code snippets. If you are looking to pratice, or just want to start then this repo is for you. The idea is to practise with vanilla JavaScript.
 
@@ -8,21 +8,35 @@ This repo is dedicated to vanilla JavaScript projects and code snippets. If you 
 - CSS
 - JavaScript
 
-# Browser Support and Operating System support
+# 🌐 Browser Support and Operating System support
 
-# Learning Resources
+Latest browsers and OS versions.
+
+#### Browsers
+
+- Chrome
+- Firefox
+- Safari
+- Edge
+
+#### Operating System
+
+- Windows
+- Mac
+
+# 📚 Learning Resources
 
 ### HTML 5
 
-- [HTML 5]()
+- [TBD]
 
 ### CSS 3
 
-- [CSS 3]()
+- [TBD]
 
 ### JavaScript
 
-- [JavaScript]()
+- [TBD]
 
 # 💡 Projects Ideas
 
