@@ -8,15 +8,31 @@ This repo is dedicated to vanilla JavaScript projects and code snippets. If you 
 - CSS
 - JavaScript
 
+# Browser Support and Operating System support
+
+# Learning Resources
+
+### HTML 5
+
+- [HTML 5]()
+
+### CSS 3
+
+- [CSS 3]()
+
+### JavaScript
+
+- [JavaScript]()
+
 # 💡 Projects Ideas
 
-1.  Tip calculator :white_check_mark:
-2.  Cost split :white_check_mark:
+1.  Tip calculator ✅
+2.  Cost split ✅
 3.  Calculator
 4.  Form validator
-5.  Color picker :white_check_mark:
+5.  Color picker ✅
 6.  Flyout navigation
-7.  Hover effect :white_check_mark:
+7.  Hover effect ✅
 8.  Slide-in/out
 9.  Popup
 10. Tootlip
@@ -33,10 +49,11 @@ This repo is dedicated to vanilla JavaScript projects and code snippets. If you 
 21. Random image
 22. Quote generator
 23. Sliders
-24. Tabs/Accordion
+24. Tabs
 25. Progress bar
 26. Word count
 27. Search for word in a page
+28. Accordion
 
 # 🤝 Contribution
 
