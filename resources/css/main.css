@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+}
+
+body {
+    padding: 20px;
+    background: #F9FAFC;
+}
+
+ul.main-list {
+    margin-top: 20px;
+}
+
+ul.main-list li {
+    list-style: none;
+    margin-bottom: 5px;
+}
+
+.container a {
+    color: #2E89FF;
+    text-decoration: none;
+}
+    
