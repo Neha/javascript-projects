@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Color Picker</title>
   </head>
@@ -29,11 +29,12 @@
       id="colorVal"
     />
     <script>
-      const colorBox = document.getElementById('color');
-      const hueValue = 120;
-      const colorVal = document.getElementById('colorVal');
+      const $ = document;
+      const COLOR_BOX = $.getElementById('color');
+      const COLOR_VAL = $.getElementById('colorVal');
+      const HUE_VALUE = 120;
 
-      colorVal.addEventListener('blur', function() {
+      COLOR_VAL.addEventListener('blur', function () {
         let colorNewVal = Number(this.value);
         color.style.background = `hsl(${colorNewVal},50%, 60%)`;
       });
