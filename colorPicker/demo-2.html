@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Color Picker</title>
   </head>
@@ -32,7 +32,7 @@
       const colorBox = document.getElementById('color');
       const rangeHandler = document.getElementById('rangeHandler');
 
-      rangeHandler.addEventListener('mousemove', function() {
+      rangeHandler.addEventListener('mousemove', function () {
         let colorNewVal = Number(this.value);
         color.style.background = `hsl(${colorNewVal},50%, 60%)`;
       });
