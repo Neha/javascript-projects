@@ -69,10 +69,6 @@ Latest browsers and OS versions.
 27. Search for word in a page
 28. Accordion
 
-# 🤝 Contribution
-
-Repo is open for the PRs. Please check the [contribution guidlines](https://github.com/Neha/javascript-projects/blob/master/CONTRIBUTION.md)
-
 # ❤️ Reach Me
 
-You can reach me at nsharma215@gmail.com or follow me at [Twitter](https://twitter.com/hellonehha)
+Reach me at [Twitter](https://twitter.com/hellonehha)
