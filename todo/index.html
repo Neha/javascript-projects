@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script defer src="index.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <title>ToDo Manager</title>
+</head>
+<body>
+  <div class="header">
+    <h3>ToDo Manager</h3>
+    <input type="text" name="todo" id="todoinput"> <button onclick="addToDo()">Add Task</button>
+  </div>
+  <div class="toDoList">
+    <p><b>Task List</b></p>
+    <table id="toDoListTable" border="1">
+      <thead>
+        <td><b>Sr.No.</b></td>
+        <td><b>Date</b></td>
+        <td><b>Name</b></td>
+        <td><b>Status</b></td>
+        <td><b>Action</b></td>
+      </thead>
+    </table>
+  </div>
+  <!-- To Do in next phase - Kan Ban Board -->
+  <!-- <div class="toDoStatus">
+    <p><b>ToDo KanBan</b></p>
+    <table id="toDoStatusTable" border="1">
+      <thead>
+        <td><b>To Do</b></td>
+        <td><b>In Progress</b></td>
+        <td><b>Done</b></td>
+      </thead>
+      <tr>
+        <td><p class="taskCards">Task1</p></td>
+        <td><p class="taskCards">Task2</p></td>
+        <td><p class="taskCards">Task3</p></td>
+      </tr>
+    </table>
+  </div> -->
+</body>
+</html>
