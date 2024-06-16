@@ -2,25 +2,11 @@
 <html lang="en">
   <head>
     <title>Color Picker</title>
+    <link rel="stylesheet" type="text/css" link="./resources/style.css" />
   </head>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-    }
-
-    #color {
-      height: 30px;
-      width: 100%;
-      padding: 10px;
-      text-align: center;
-      background: red;
-      margin: 10px 0;
-    }
-  </style>
   <body>
     <div id="color">
-      Enter any poisitive number from 0 to 360 and see the magic
+      Enter any positive number from 0 to 360 and see the magic
     </div>
     <input
       type="text"
@@ -33,10 +19,11 @@
       const COLOR_BOX = $.getElementById('color');
       const COLOR_VAL = $.getElementById('colorVal');
       const HUE_VALUE = 120;
+      const BODY = $.querySelector('body')
 
       COLOR_VAL.addEventListener('blur', function () {
         let colorNewVal = Number(this.value);
-        color.style.background = `hsl(${colorNewVal},50%, 60%)`;
+        BODY.style.background = `hsl(${colorNewVal},50%, 60%)`;
       });
     </script>
   </body>
