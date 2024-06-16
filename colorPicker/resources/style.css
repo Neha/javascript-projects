@@ -1,4 +1,13 @@
 * {
     margin: 0;
     padding: 0;
-}
+  }
+
+  #color {
+    height: 30px;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background: red;
+    margin: 10px 0;
+  }
