@@ -49,7 +49,7 @@ Latest browsers and OS versions.
 7.  Hover effect ✅
 8.  Slide-in/out
 9.  Popup
-10. Tootlip
+10. Tootlip ✅
 11. JS animations
 12. To-do list
 13. Quiz
@@ -65,7 +65,7 @@ Latest browsers and OS versions.
 23. Sliders
 24. Tabs
 25. Progress bar
-26. Word count
+26. Word count ✅
 27. Search for word in a page
 28. Accordion
 
